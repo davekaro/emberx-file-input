@@ -18,6 +18,11 @@ export default Ember.Component.extend({
    */
   change(e) {
     this.sendAction("action", e.target.files);
+
+    // Allows you to pick the same file twice in a row.
+    if (this.get('resetInput')) {
+      this.$().val('');
+    }
   },
 
   randomId: Ember.computed(function() {
